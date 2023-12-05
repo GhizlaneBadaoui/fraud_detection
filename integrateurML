@@ -1,0 +1,21 @@
+import pandas as pd
+import numpy as np
+
+file = '/Users/othmanesl/Downloads/datasettwit2.csv'
+
+# Charger le fichier CSV en tant que DataFrame
+df = pd.read_csv(file, sep=';')
+
+# Séparer les fonctionnalités (X) de la variable cible (Y)
+X = df.iloc[:, :-1]  # Sélectionner toutes les colonnes sauf la dernière
+Y = df.iloc[:, -1]   # Sélectionner la dernière colonne
+
+X = X.reset_index(drop=True)
+Y = Y.reset_index(drop=True)
+
+# Afficher les premières lignes de X et Y
+print("X:")
+print(X.head().to_string(index=False))
+
+print("\nY:")
+print(Y.head().to_string(index=False))

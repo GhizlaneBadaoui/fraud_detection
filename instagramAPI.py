@@ -60,6 +60,13 @@ def get_user_info_2(username):
 def extract_data(post_url):
     response = get_post_likers(post_url)
 
+    with open(config.likes_file_path, 'w', newline='', encoding="utf8") as output_file:
+        for index, user in enumerate(response['likes']):
+            if index == 0:
+                csv_writer = csv.DictWriter(output_file, fieldnames=user.keys())
+                csv_writer.writeheader()
+            csv_writer.writerow(user)
+
     with open(config.output_file_path, 'w', newline='', encoding="utf8") as output_file:
         csv_writer = csv.DictWriter(output_file, fieldnames=columns_to_include)
         csv_writer.writeheader()
@@ -95,8 +102,10 @@ def extract_data(post_url):
                 }
                 csv_writer.writerow(user_data)
                 # print(user_data)
+    return response['likes_count']
 
 
 if __name__ == "__main__":
     post_url = sys.argv[-1]
-    extract_data(post_url=post_url)
+    likes = extract_data(post_url=post_url)
+    print("Number of likes :", likes)

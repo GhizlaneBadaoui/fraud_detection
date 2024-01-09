@@ -9,11 +9,25 @@ public class PythonModelService {
     private SubInterpreter jep;
     String pathToScript;
 
-    public PythonModelService(String path) {
+
+    public PythonModelService() {
+    }
+
+    public void ModelService() {
         // Créer une nouvelle instance de SubInterpreter
-        this.pathToScript = path;
         this.jep = new SubInterpreter();
         // Utilisez le SubInterpreter pour interagir avec Python
+        this.jep.runScript("from main import init");
+
+        // Prepare input data (this would be your Java input converted to Python-compatible data)
+        // For example, if input_data is a list:
+
+        // Call the Python predict function with input data
+        jep.eval("result = init()");
+
+        // Get the result from Python
+        Object result = jep.getValue("result");
+        System.out.println("Prediction result from Python: " + result);
 
     }
 
@@ -31,6 +45,11 @@ public class PythonModelService {
         if (this.jep != null) {
             this.jep.close();
         }
+    }
+
+    public static void main(String[] args) {
+        PythonModelService pythonModelService = new PythonModelService();
+        pythonModelService.ModelService();
     }
 
 

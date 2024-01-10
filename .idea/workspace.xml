@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="90303aa4-e293-4367-8a79-4a67156c9080" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CalculStatisticMS/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/CalculStatisticMS/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/CalculStatisticMS/src/main/java/Models/PythonModelService.java" beforeDir="false" afterPath="$PROJECT_DIR$/CalculStatisticMS/src/main/java/Models/PythonModelService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/CalculStatisticMS/src/main/java/Models/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/CalculStatisticMS/src/main/java/Models/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,12 +18,24 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="KubernetesApiProvider">{
+  &quot;contexts&quot;: [
+    {
+      &quot;name&quot;: &quot;minikube&quot;,
+      &quot;originalNamespace&quot;: &quot;default&quot;
+    }
+  ],
+  &quot;isMigrated&quot;: true
+}</component>
+  <component name="KubernetesSettings">
+    <option name="contextName" value="minikube" />
+  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 3
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
   <component name="ProjectId" id="2aiNYTcNU2UmbAHxH5Too2EahD4" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -29,6 +44,8 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "Application.PythonModelService.executor": "Run",
+    "Maven.CalculStatisticMS [clean].executor": "Run",
+    "Maven.CalculStatisticMS [compile].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "git-widget-placeholder": "CalculStatisticMS",
@@ -39,11 +56,11 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.26123595",
     "run.configurations.included.in.services": "true",
-    "settings.editor.selected.configurable": "com.poratu.idea.plugins.tomcat.setting.TomcatServersConfigurable",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -91,6 +108,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <list>
+      <item itemvalue="Application.PythonModelService" />
+      <item itemvalue="Spring Boot.CalculStatisticMsApplication" />
+      <item itemvalue="Spring Boot.MicroServicesDecouverteMsApplication" />
+      <item itemvalue="Spring Boot.TestMsApplication" />
+    </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.PythonModelService" />
@@ -100,6 +123,7 @@
   <component name="SharedIndexes">
     <attachedChunks>
       <set>
+        <option value="jdk-11.0.21-corretto-11.0.21-3183f394aec4-d55de845" />
         <option value="jdk-18.0.2-corretto-18.0.2-3183f394aec4-38982a12" />
         <option value="jdk-19.0.2-corretto-19.0.2-3183f394aec4-f0552fc0" />
       </set>
@@ -114,6 +138,9 @@
       <option name="presentableId" value="Default" />
       <updated>1704797487803</updated>
       <workItem from="1704797489024" duration="1538000" />
+      <workItem from="1704877106280" duration="4521000" />
+      <workItem from="1704882445998" duration="2772000" />
+      <workItem from="1704892409773" duration="3605000" />
     </task>
     <servers />
   </component>

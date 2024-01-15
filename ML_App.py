@@ -5,7 +5,7 @@ app = Flask(__name__)
 
 model = FraudDetectionModel("clean_data.csv")
 
-@app.route('/', methods=['GET', 'POST'])
+@app.route('/', methods=['GET'])
 def hello():
     return model.init()
 

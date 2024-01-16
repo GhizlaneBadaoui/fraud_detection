@@ -1,5 +1,6 @@
-from flask import Flask, request
+from flask import Flask, request, send_file
 from main import FraudDetectionModel
+import joblib
 app = Flask(__name__)
 
 
@@ -7,11 +8,15 @@ model = FraudDetectionModel("clean_data.csv")
 
 @app.route('/', methods=['GET'])
 def hello():
-    return model.init()
+    model.init()
+    model_filename = 'saved_model.joblib'
+    joblib.dump(model, model_filename)
+    return send_file(model_filename, as_attachment=True)
 
-@app.route('/prediction')
-def predict():
-    return model.predict_with_confidence()
+@app.route('/test')
+def test():
+    return "hello"
+
 
 if __name__ == '__main__':
     app.run(debug=True)

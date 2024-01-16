@@ -2,6 +2,7 @@ import pandas as pd
 from sklearn.metrics import accuracy_score
 from sklearn.model_selection import GridSearchCV, cross_val_score, train_test_split
 from sklearn.tree import DecisionTreeClassifier
+import joblib
 
 class FraudDetectionModel:
     grid_search: GridSearchCV
@@ -11,6 +12,7 @@ class FraudDetectionModel:
     y_train = None
     y_test  = None
     dataset = None
+    test = "test from the model"
     
     def __init__(self, dataset_path:str):
         self.file_path = dataset_path

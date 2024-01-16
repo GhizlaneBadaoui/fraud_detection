@@ -20,7 +20,7 @@
                 Specifically designed for scenarios like elections, it helps you identify if likes are from genuine
                 users or bots, ensuring transparency. Powered by advanced machine learning, our app distinguishes
                 between human and bot interactions.</p>
-              <p style="text-align:justify; color:#CA397D; font-style:italic;">Simply paste the Instagram post URL, and our app will analyze the data, providing you with insightful
+              <p style="text-align:justify; color:#385DAE; font-style:italic;">Simply paste the Instagram post URL, and our app will analyze the data, providing you with insightful
                 results. <br> Uncover the authenticity behind every like with ease !</p>
             </div>
           </div>
@@ -45,7 +45,6 @@
           </div>
         </div>
       </div>
-      <div class="row" id="instagram-container"></div>
       <div class="row" id="div-1" style="display: none">
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -63,7 +62,6 @@
               <p class="mb-0"><span class="text-success text-sm font-weight-bolder"></span>&nbsp;</p>
             </div>
           </div>
-          
         </div>
         <div class="col-xl-3 col-sm-6 mb-xl-0 mb-4">
           <div class="card">
@@ -121,20 +119,15 @@
         <div class="col-lg-4 col-md-6 mt-4 mb-4">
           <div class="card z-index-2 ">
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
-              <div class="bg-gradient-primary shadow-primary border-radius-lg py-3 pe-1">
+              <div class="bg-gradient-faded-white shadow-primary border-radius-lg py-3 pe-1">
                 <div class="chart">
-                  <canvas id="chart-bars" class="chart-canvas" height="170"></canvas>
+                  <canvas id="pie-chart" class="chart-canvas" height="200"></canvas>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Website Views</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> campaign sent 2 days ago </p>
-              </div>
+              <h6 class="mb-0 ">Likes Distribution : Humans vs Bots</h6>
+              <p class="text-sm ">in relation to sample size</p>
             </div>
           </div>
         </div>
@@ -143,18 +136,13 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gradient-success shadow-success border-radius-lg py-3 pe-1">
                 <div class="chart">
-                  <canvas id="chart-line" class="chart-canvas" height="170"></canvas>
+                  <canvas id="chart-bars" class="chart-canvas" height="200"></canvas>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 "> Daily Sales </h6>
-              <p class="text-sm "> (<span class="font-weight-bolder">+15%</span>) increase in today sales. </p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm"> updated 4 min ago </p>
-              </div>
+              <h6 class="mb-0 "> Machine Learning analysis </h6>
+              <p class="text-sm ">Correlation values</p>
             </div>
           </div>
         </div>
@@ -163,45 +151,24 @@
             <div class="card-header p-0 position-relative mt-n4 mx-3 z-index-2 bg-transparent">
               <div class="bg-gradient-dark shadow-dark border-radius-lg py-3 pe-1">
                 <div class="chart">
-                  <canvas id="chart-line-tasks" class="chart-canvas" height="170"></canvas>
+                  <canvas id="learning-curve" class="chart-canvas" height="200"></canvas>
                 </div>
               </div>
             </div>
             <div class="card-body">
-              <h6 class="mb-0 ">Completed Tasks</h6>
-              <p class="text-sm ">Last Campaign Performance</p>
-              <hr class="dark horizontal">
-              <div class="d-flex ">
-                <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <p class="mb-0 text-sm">just updated</p>
-              </div>
+              <h6 class="mb-0 ">Machine Learning results</h6>
+              <p class="text-sm ">Learning curves</p>
             </div>
           </div>
         </div>
       </div>
       <div class="row mb-4" id="div-3" style="display: none">
         <div class="col-lg-8 col-md-6 mb-md-0 mb-4">
-          <div class="card">
+          <div class="card h-100">
             <div class="card-header pb-0">
               <div class="row">
                 <div class="col-lg-6 col-7">
-                  <h6>Projects</h6>
-                  <p class="text-sm mb-0">
-                    <i class="fa fa-check text-info" aria-hidden="true"></i>
-                    <span class="font-weight-bold ms-1">30 done</span> this month
-                  </p>
-                </div>
-                <div class="col-lg-6 col-5 my-auto text-end">
-                  <div class="dropdown float-lg-end pe-4">
-                    <a class="cursor-pointer" id="dropdownTable" data-bs-toggle="dropdown" aria-expanded="false">
-                      <i class="fa fa-ellipsis-v text-secondary"></i>
-                    </a>
-                    <ul class="dropdown-menu px-2 py-3 ms-sm-n4 ms-n5" aria-labelledby="dropdownTable">
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Another action</a></li>
-                      <li><a class="dropdown-item border-radius-md" href="javascript:;">Something else here</a></li>
-                    </ul>
-                  </div>
+                  <h6>Accounts details</h6>
                 </div>
               </div>
             </div>
@@ -210,244 +177,13 @@
                 <table class="table align-items-center mb-0">
                   <thead>
                     <tr>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Companies</th>
-                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Members</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Budget</th>
-                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Completion</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">User</th>
+                      <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Verified</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Prediction</th>
+                      <th class="text-center text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Predict probability</th>
                     </tr>
                   </thead>
-                  <tbody>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-xd.svg" class="avatar avatar-sm me-3" alt="xd">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Material XD Version</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="/static/assets/img/team-1.jpg" alt="team1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="/static/assets/img/team-2.jpg" alt="team2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="/static/assets/img/team-3.jpg" alt="team3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="/static/assets/img/team-4.jpg" alt="team4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $14,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">60%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-60" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-atlassian.svg" class="avatar avatar-sm me-3" alt="atlassian">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add Progress Track</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="/static/assets/img/team-2.jpg" alt="team5">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="/static/assets/img/team-4.jpg" alt="team6">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $3,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">10%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-10" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-slack.svg" class="avatar avatar-sm me-3" alt="team7">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Fix Platform Errors</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="/static/assets/img/team-3.jpg" alt="team8">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="/static/assets/img/team-1.jpg" alt="team9">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> Not set </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-spotify.svg" class="avatar avatar-sm me-3" alt="spotify">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Launch our Mobile App</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="/static/assets/img/team-4.jpg" alt="user1">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Romina Hadid">
-                            <img src="/static/assets/img/team-3.jpg" alt="user2">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Alexander Smith">
-                            <img src="/static/assets/img/team-4.jpg" alt="user3">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="/static/assets/img/team-1.jpg" alt="user4">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $20,500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">100%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-success w-100" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-jira.svg" class="avatar avatar-sm me-3" alt="jira">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Add the New Pricing Page</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="/static/assets/img/team-4.jpg" alt="user5">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $500 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">25%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-25" role="progressbar" aria-valuenow="25" aria-valuemin="0" aria-valuemax="25"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <div class="d-flex px-2 py-1">
-                          <div>
-                            <img src="/static/assets/img/small-logos/logo-invision.svg" class="avatar avatar-sm me-3" alt="invision">
-                          </div>
-                          <div class="d-flex flex-column justify-content-center">
-                            <h6 class="mb-0 text-sm">Redesign New Online Shop</h6>
-                          </div>
-                        </div>
-                      </td>
-                      <td>
-                        <div class="avatar-group mt-2">
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Ryan Tompson">
-                            <img src="/static/assets/img/team-1.jpg" alt="user6">
-                          </a>
-                          <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="Jessica Doe">
-                            <img src="/static/assets/img/team-4.jpg" alt="user7">
-                          </a>
-                        </div>
-                      </td>
-                      <td class="align-middle text-center text-sm">
-                        <span class="text-xs font-weight-bold"> $2,000 </span>
-                      </td>
-                      <td class="align-middle">
-                        <div class="progress-wrapper w-75 mx-auto">
-                          <div class="progress-info">
-                            <div class="progress-percentage">
-                              <span class="text-xs font-weight-bold">40%</span>
-                            </div>
-                          </div>
-                          <div class="progress">
-                            <div class="progress-bar bg-gradient-info w-40" role="progressbar" aria-valuenow="40" aria-valuemin="0" aria-valuemax="40"></div>
-                          </div>
-                        </div>
-                      </td>
-                    </tr>
+                  <tbody id="dataTableBody">
                   </tbody>
                 </table>
               </div>
@@ -537,120 +273,82 @@
     function showResults() {
       const input = document.getElementById("post-url");
       const inputValue = input.value;
-      console.log(inputValue);
+
       document.getElementById("div-1").style.display = "";
       document.getElementById("div-2").style.display = "";
-      document.getElementById("div-3").style.display = "";   
+      document.getElementById("div-3").style.display = "";
     }
 
     function reset() {
+      document.getElementById("post-url").value = "";
       document.getElementById("div-1").style.display = "none";
       document.getElementById("div-2").style.display = "none";
       document.getElementById("div-3").style.display = "none";
     }
 
-    var ctx = document.getElementById("chart-bars").getContext("2d");
+    var humanSize = 1;
+    var botSize = 3;
+    var likes = 1000;
+
+    sampleSize = 4;
+    samplePrc = 100 * sampleSize / likes;
+
+    var humanPrc = 100 * humanSize / sampleSize;
+    botPrc = 100 * botSize / sampleSize;
+
+    const dataList = [
+      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9", username: "oussama307r", verified: true, prediction: "bot", probability: 60 },
+      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/71527027_2503415269747548_8178802652931424256_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=HUFJ450B9cAAX-8_N64&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfDHPbZJVQ0eF5FRkwKKbb3X9JonHGarFTArubULd--sBQ&oe=6583CA57&_nc_sid=28a1e9", username: "yousufmansoor", verified: false, prediction: "human", probability: 40 },
+      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/393350647_3306548992969492_2602333449843746346_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=CTN0VxR4tQoAX_ubZDf&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCH8aNW3X-BYk42QHo6lIolwRDhdHzh17zyJToYi8f6aA&oe=65844D71&_nc_sid=28a1e9", username: "na_1mah_", verified: true, prediction: "human", probability: 55 },
+    ];
+
+    /* *********************** pie chart *********************** */
+    var likesPercentages = [humanPrc, botPrc];
+    var ctx = document.getElementById("pie-chart").getContext("2d");
 
     new Chart(ctx, {
-      type: "bar",
+      type: "doughnut",
       data: {
-        labels: ["M", "T", "W", "T", "F", "S", "S"],
+        labels: ["Human", "Bot"],
         datasets: [{
-          label: "Sales",
-          tension: 0.4,
-          borderWidth: 0,
-          borderRadius: 4,
-          borderSkipped: false,
-          backgroundColor: "rgba(255, 255, 255, .8)",
-          data: [50, 20, 10, 22, 50, 10, 40],
-          maxBarThickness: 6
-        }, ],
+          label: "Percentage",
+          backgroundColor: ["#9B1442", "#3C4A74"],
+          data: likesPercentages
+        }],
       },
       options: {
         responsive: true,
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true,
+             position: 'right'
           }
         },
         interaction: {
           intersect: false,
           mode: 'index',
         },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              suggestedMin: 0,
-              suggestedMax: 500,
-              beginAtZero: true,
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-              color: "#fff"
-            },
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: true,
-              drawOnChartArea: true,
-              drawTicks: false,
-              borderDash: [5, 5],
-              color: 'rgba(255, 255, 255, .2)'
-            },
-            ticks: {
-              display: true,
-              color: '#f8f9fa',
-              padding: 10,
-              font: {
-                size: 14,
-                weight: 300,
-                family: "Roboto",
-                style: 'normal',
-                lineHeight: 2
-              },
-            }
-          },
-        },
       },
     });
 
-
-    var ctx2 = document.getElementById("chart-line").getContext("2d");
+    /* **************** features with correlation ******************** */
+    var correlations = [0.2, -0.5, 0.8, -0.3, 0.6, -0.1, 0.7, -0.4, 0.9];
+    var features = ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5", "Feature 6", "Feature 7", "Feature 8", "Feature 9"]
+    var ctx2 = document.getElementById("chart-bars").getContext("2d");
 
     new Chart(ctx2, {
-      type: "line",
+      type: "bar",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: features,
         datasets: [{
-          label: "Mobile apps",
-          tension: 0,
+          label: "Correlation",
+          backgroundColor: "rgba(255, 255, 255, .8)",
+          data: correlations,
           borderWidth: 0,
-          pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
-          pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
-          backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 320, 500, 350, 200, 230, 500],
-          maxBarThickness: 6
-
+          borderRadius: 4,
+          borderSkipped: false,
+          maxBarThickness: 40,
         }],
       },
       options: {
@@ -691,17 +389,18 @@
           x: {
             grid: {
               drawBorder: false,
-              display: false,
-              drawOnChartArea: false,
+              display: true,
+              drawOnChartArea: true,
               drawTicks: false,
-              borderDash: [5, 5]
+              borderDash: [5, 5],
+              color: 'rgba(255, 255, 255, .2)'
             },
             ticks: {
               display: true,
               color: '#f8f9fa',
               padding: 10,
               font: {
-                size: 14,
+                size: 9,
                 weight: 300,
                 family: "Roboto",
                 style: 'normal',
@@ -713,26 +412,38 @@
       },
     });
 
-    var ctx3 = document.getElementById("chart-line-tasks").getContext("2d");
+/* ******************** learning curves ******************** */
+    const train_sizes = [50, 100, 150, 200, 250];
+    const train_scores_mean = [0.8, 0.75, 0.7, 0.85, 0.9];
+    const validation_scores_mean = [0.7, 0.65, 0.6, 0.75, 0.8];
+
+    var ctx3 = document.getElementById("learning-curve").getContext("2d");
 
     new Chart(ctx3, {
       type: "line",
       data: {
-        labels: ["Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+        labels: train_sizes,
         datasets: [{
-          label: "Mobile apps",
+          label: "Train score",
           tension: 0,
           borderWidth: 0,
           pointRadius: 5,
-          pointBackgroundColor: "rgba(255, 255, 255, .8)",
+          pointBackgroundColor: "rgba(241, 155, 148, .8)",
           pointBorderColor: "transparent",
-          borderColor: "rgba(255, 255, 255, .8)",
-          borderWidth: 4,
+          borderColor: "rgba(241, 155, 148, .8)",
+          borderWidth: 3,
           backgroundColor: "transparent",
-          fill: true,
-          data: [50, 40, 300, 220, 500, 250, 400, 230, 500],
-          maxBarThickness: 6
-
+          data: train_scores_mean
+        },
+        {
+          label: "Val score",
+          pointRadius: 5,
+          pointBackgroundColor: "rgba(221, 250, 219, .8)",
+          pointBorderColor: "transparent",
+          borderColor: "rgba(221, 250, 219, .8)",
+          borderWidth: 3,
+          backgroundColor: "transparent",
+          data: validation_scores_mean
         }],
       },
       options: {
@@ -740,7 +451,10 @@
         maintainAspectRatio: false,
         plugins: {
           legend: {
-            display: false,
+            display: true,
+        labels: {
+          color: '#fff',  // Couleur du texte de la légende
+        }
           }
         },
         interaction: {
@@ -795,14 +509,7 @@
       },
     });
 
-    humanSize = 1;
-    humanPrc = 6;
-    botSize = 3;
-    botPrc = 7;
-    sampleSize = 2;
-    samplePrc = 5;
-    likes = 1000;
-
+    /*  ***************** display results ******************* */
     document.getElementById('human-size').innerHTML = humanSize;
     document.getElementById('human-prc').innerHTML = humanPrc;
 
@@ -814,7 +521,46 @@
 
     document.getElementById('total-likes').innerHTML = likes;
 
-  </script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const tableBody = document.getElementById('dataTableBody');
+      dataList.forEach(data => {
+        const row = document.createElement('tr');
 
+        const userColumn = document.createElement('td');
+        userColumn.innerHTML = `<div class="d-flex px-2 py-1">
+          <div><img src="${data.imageUrl}" class="avatar avatar-sm me-3" alt="${data.username}"></div>
+          <div class="d-flex flex-column justify-content-center"><h6 class="mb-0 text-sm">${data.username}</h6></div>
+        </div>`;
+        row.appendChild(userColumn);
+
+        const verifiedColumn = document.createElement('td');
+        verifiedColumn.innerHTML = data.verified ? `<i class="material-icons text-info text-gradient">verified</i>` : `<i class="text-danger fa fa-times"></i>`;
+        row.appendChild(verifiedColumn);
+
+        const predictionColumn = document.createElement('td');
+        predictionColumn.className = "align-middle text-center text-sm";
+        predictionColumn.innerHTML = `<span class="text-xs font-weight-bold">${data.prediction}</span>`;
+        row.appendChild(predictionColumn);
+
+        const probabilityColumn = document.createElement('td');
+        probabilityColumn.className = "align-middle";
+        probabilityColumn.innerHTML = `<div class="progress-wrapper w-75 mx-auto">
+          <div class="progress-info">
+            <div class="progress-percentage">
+              <span class="text-xs font-weight-bold">${data.probability}%</span>
+            </div>
+          </div>
+          <div class="progress">
+            <div class="progress-bar bg-gradient-info w-${data.probability}" role="progressbar" aria-valuenow="${data.probability}" aria-valuemin="0" aria-valuemax="100"></div>
+          </div>
+        </div>`;
+        row.appendChild(probabilityColumn);
+
+
+        tableBody.appendChild(row);
+      });
+    });
+
+  </script>
 
 {% endblock javascripts %}

@@ -4,6 +4,9 @@ import joblib
 
 app = Flask(__name__)
 
+
+model = None
+
 @app.route('/', methods=['GET'])
 def hello():
     remote_file_url = "https://mlflaskms.azurewebsites.net/"
@@ -17,8 +20,9 @@ def hello():
             with open(local_file_path, 'wb') as local_file:
                 local_file.write(response.content)
             model_filename = 'trained_model.joblib'
-            loaded_model = joblib.load(model_filename)
-            return loaded_model.test
+            global model
+            model = joblib.load(model_filename)
+            return model.test
         else:
             return(f"Failed to download remote file. HTTP Status Code: {response.status_code}")
     except Exception as e:

@@ -1,5 +1,4 @@
 from flask import Flask, request
-from main import FraudDetectionModel
 import requests
 import joblib
 
@@ -7,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def hello():
-    remote_file_url = "http://127.0.0.1:5000/"
+    remote_file_url = "https://mlflaskms.azurewebsites.net/"
     local_file_path = "trained_model.joblib"
 
     try:
@@ -27,7 +26,7 @@ def hello():
 
 @app.route('/test')
 def text():
-    url = "http://127.0.0.1:5000/get_text"
+    url = "https://mlflaskms.azurewebsites.net/test"
     return f"Requests library version: {requests.__version__}"
 
 

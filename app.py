@@ -27,8 +27,9 @@ def hello():
 @app.route('/test')
 def text():
     url = "https://mlflaskms.azurewebsites.net/test"
-    return f"Requests library version: {requests.__version__}"
-
+    response = requests.get(url)
+    return response.content
+    
 
 if __name__ == '__main__':
     app.run(debug=True, port=5002)

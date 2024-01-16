@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 from main import FraudDetectionModel
 import joblib
+
 app = Flask(__name__)
 
 
@@ -15,7 +16,7 @@ def hello():
 
 @app.route('/test')
 def test():
-    return "hello"
+    return "hello2"
 
 
 if __name__ == '__main__':

@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def hello():
-    remote_file_url = "http://127.0.0.1:5000/getModel"
+    remote_file_url = "https://mlflaskms.azurewebsites.net/"
     local_file_path = "trained_model.joblib"
 
     try:
@@ -26,7 +26,7 @@ def hello():
 
 @app.route('/test')
 def text():
-    url = "http://127.0.0.1:5000/test"
+    url = "https://mlflaskms.azurewebsites.net/test"
     response = requests.get(url)
     return response.content
     

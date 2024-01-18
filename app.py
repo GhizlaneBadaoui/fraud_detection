@@ -1,5 +1,6 @@
 from flask import Flask, request, send_file
 from instagramAPI import extract_data
+import requests
 
 app = Flask(__name__)
 
@@ -7,7 +8,6 @@ app = Flask(__name__)
 def hello(url):
     likes = extract_data(post_url=url)
     
-
 
 
 if __name__ == '__main__':

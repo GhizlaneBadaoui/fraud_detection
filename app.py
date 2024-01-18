@@ -7,6 +7,7 @@ app = Flask(__name__)
 @app.route('/<url>', methods=['GET'])
 def hello(url):
     likes = extract_data(post_url=url)
+    return url
     
 
 

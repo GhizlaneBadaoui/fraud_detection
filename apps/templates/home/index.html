@@ -270,69 +270,114 @@
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script src="/static/assets/js/plugins/chartjs.min.js"></script>
 <script>
+    var humanSize, botSize, likes, sampleSize, samplePrc, humanPrc, botPrc;
+    var dataList = [];
+    var pieChart = null;
+
+    function isValidUrl(url) {
+      var urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?$/;
+      return urlRegex.test(url);
+    }
+
     function showResults() {
+      resetGraphs();
+
       const input = document.getElementById("post-url");
       const inputValue = input.value;
 
+      if (inputValue.trim() === "") {
+        alert("Please enter a valid URL.");
+        return;
+      }
+
+      if (!isValidUrl(inputValue)) {
+        alert("Invalid URL. Please enter a valid URL.");
+        return;
+      }
+
+      // display results
+      humanSize = 1;
+      botSize = 3;
+      likes = 1000;
+
+      sampleSize = 4;
+      samplePrc = 100 * sampleSize / likes;
+
+      humanPrc = 100 * humanSize / sampleSize;
+      botPrc = 100 * botSize / sampleSize;
+
+      dataList = [
+        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9", username: "oussama307r", verified: true, prediction: "bot", probability: 60 },
+        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/71527027_2503415269747548_8178802652931424256_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=HUFJ450B9cAAX-8_N64&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfDHPbZJVQ0eF5FRkwKKbb3X9JonHGarFTArubULd--sBQ&oe=6583CA57&_nc_sid=28a1e9", username: "yousufmansoor", verified: false, prediction: "human", probability: 40 },
+        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/393350647_3306548992969492_2602333449843746346_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=CTN0VxR4tQoAX_ubZDf&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCH8aNW3X-BYk42QHo6lIolwRDhdHzh17zyJToYi8f6aA&oe=65844D71&_nc_sid=28a1e9", username: "na_1mah_", verified: true, prediction: "human", probability: 55 },
+      ];
+
+      updateChart(humanPrc, botPrc);
+      updateData(humanSize, humanPrc, botSize, botPrc, sampleSize, samplePrc, likes);
+      updateTable(dataList);
       document.getElementById("div-1").style.display = "";
       document.getElementById("div-2").style.display = "";
       document.getElementById("div-3").style.display = "";
     }
 
-    function reset() {
-      document.getElementById("post-url").value = "";
+    function resetGraphs() {
+      humanSize = 0;
+      botSize = 0;
+      likes = 0;
+
+      sampleSize = 0;
+      samplePrc = 0;
+
+      humanPrc = 0;
+      botPrc = 0;
+
+      const dataList = [];
+      if (pieChart != null) { pieChart.destroy(); }
+
+      // hide the graphs
       document.getElementById("div-1").style.display = "none";
       document.getElementById("div-2").style.display = "none";
       document.getElementById("div-3").style.display = "none";
     }
 
-    var humanSize = 1;
-    var botSize = 3;
-    var likes = 1000;
-
-    sampleSize = 4;
-    samplePrc = 100 * sampleSize / likes;
-
-    var humanPrc = 100 * humanSize / sampleSize;
-    botPrc = 100 * botSize / sampleSize;
-
-    const dataList = [
-      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9", username: "oussama307r", verified: true, prediction: "bot", probability: 60 },
-      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/71527027_2503415269747548_8178802652931424256_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=HUFJ450B9cAAX-8_N64&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfDHPbZJVQ0eF5FRkwKKbb3X9JonHGarFTArubULd--sBQ&oe=6583CA57&_nc_sid=28a1e9", username: "yousufmansoor", verified: false, prediction: "human", probability: 40 },
-      { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/393350647_3306548992969492_2602333449843746346_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=CTN0VxR4tQoAX_ubZDf&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCH8aNW3X-BYk42QHo6lIolwRDhdHzh17zyJToYi8f6aA&oe=65844D71&_nc_sid=28a1e9", username: "na_1mah_", verified: true, prediction: "human", probability: 55 },
-    ];
+    function reset() {
+      document.getElementById("post-url").value = "";
+      resetGraphs();
+    }
 
     /* *********************** pie chart *********************** */
-    var likesPercentages = [humanPrc, botPrc];
-    var ctx = document.getElementById("pie-chart").getContext("2d");
+    function updateChart(humanPrc, botPrc) {
+      var likesPercentages = [humanPrc, botPrc];
+      var ctx = document.getElementById("pie-chart").getContext("2d");
 
-    new Chart(ctx, {
-      type: "doughnut",
-      data: {
-        labels: ["Human", "Bot"],
-        datasets: [{
-          label: "Percentage",
-          backgroundColor: ["#9B1442", "#3C4A74"],
-          data: likesPercentages
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: {
-            display: true,
-             position: 'right'
-          }
+      pieChart = new Chart(ctx, {
+        type: "doughnut",
+        data: {
+          labels: ["Human", "Bot"],
+          datasets: [{
+            label: "Percentage",
+            backgroundColor: ["#9B1442", "#3C4A74"],
+            data: likesPercentages
+          }],
         },
-        interaction: {
-          intersect: false,
-          mode: 'index',
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          plugins: {
+            legend: {
+              display: true,
+               position: 'right'
+            }
+          },
+          interaction: {
+            intersect: false,
+            mode: 'index',
+          },
         },
-      },
-    });
+      });
+    }
 
-    /* **************** features with correlation ******************** */
+    /* **************** static : features with correlation ******************** */
     var correlations = [0.2, -0.5, 0.8, -0.3, 0.6, -0.1, 0.7, -0.4, 0.9];
     var features = ["Feature 1", "Feature 2", "Feature 3", "Feature 4", "Feature 5", "Feature 6", "Feature 7", "Feature 8", "Feature 9"]
     var ctx2 = document.getElementById("chart-bars").getContext("2d");
@@ -412,10 +457,10 @@
       },
     });
 
-/* ******************** learning curves ******************** */
-    const train_sizes = [50, 100, 150, 200, 250];
-    const train_scores_mean = [0.8, 0.75, 0.7, 0.85, 0.9];
-    const validation_scores_mean = [0.7, 0.65, 0.6, 0.75, 0.8];
+/* ******************** static : learning curves ******************** */
+    const train_sizes = [1, 532, 1065, 1597, 2129, 2661, 3194, 3726, 4258, 4791];
+    const train_scores_mean = [1.0, 0.86278195, 0.8313615, 0.82855354, 0.82790042, 0.82901165, 0.82961803, 0.83333333, 0.83147017, 0.82913797];
+    const validation_scores_mean = [0.59276377, 0.7684078, 0.79195108, 0.79178483, 0.80497557, 0.80881628, 0.80931558, 0.81098615, 0.81165504, 0.81048531];
 
     var ctx3 = document.getElementById("learning-curve").getContext("2d");
 
@@ -510,19 +555,26 @@
     });
 
     /*  ***************** display results ******************* */
-    document.getElementById('human-size').innerHTML = humanSize;
-    document.getElementById('human-prc').innerHTML = humanPrc;
-
-    document.getElementById('bot-size').innerHTML = botSize;
-    document.getElementById('bot-prc').innerHTML = botPrc;
-
-    document.getElementById('sample-size').innerHTML = sampleSize;
-    document.getElementById('sample-prc').innerHTML = samplePrc;
-
-    document.getElementById('total-likes').innerHTML = likes;
-
     document.addEventListener('DOMContentLoaded', function () {
+      updateTable(dataList);
+    });
+
+    function updateData(humanSize, humanPrc, botSize, botPrc, sampleSize, samplePrc, likes) {
+      document.getElementById('human-size').innerHTML = humanSize;
+      document.getElementById('human-prc').innerHTML = humanPrc;
+
+      document.getElementById('bot-size').innerHTML = botSize;
+      document.getElementById('bot-prc').innerHTML = botPrc;
+
+      document.getElementById('sample-size').innerHTML = sampleSize;
+      document.getElementById('sample-prc').innerHTML = samplePrc;
+
+      document.getElementById('total-likes').innerHTML = likes;
+    }
+
+    function updateTable(dataList) {
       const tableBody = document.getElementById('dataTableBody');
+      tableBody.innerHTML = '';
       dataList.forEach(data => {
         const row = document.createElement('tr');
 
@@ -555,12 +607,9 @@
           </div>
         </div>`;
         row.appendChild(probabilityColumn);
-
-
         tableBody.appendChild(row);
       });
-    });
-
+    }
   </script>
 
 {% endblock javascripts %}

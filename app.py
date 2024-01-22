@@ -1,19 +1,19 @@
-from flask import Flask, request, send_file
+from flask import Flask
 from instagramAPI import extract_data
-import requests
 
 app = Flask(__name__)
 
 @app.route('/<url>', methods=['GET'])
 def hello(url):
-    likes, features = extract_data(post_url='https://www.instagram.com/insatoulouse/p/C2KGUkQNfqs/?hl=fr')
+    likes, features = extract_data(post_url=url)
     print(likes)
     print(features)
-    return url
-    
+    return {'total': likes, "likes": features}
+
 @app.route('/', methods=['GET'])
 def home():
     return "hello"
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5003)

@@ -1,11 +1,20 @@
 import requests
-import csv
 import itertools
 import config
-import sys
+import re
 
 columns_to_include = ['id', 'screen_name', 'verified', 'followers_count', 'friends_count', 'description',
                       'profile_image_url']
+
+def extract_shortcode(url):
+    match = re.search(r'/p/([^/]+)/', url)
+
+    if match:
+        shortcode = match.group(1)
+        return shortcode
+    else:
+        return url
+
 
 """
     Function to get 40 likers of a post and total number of likes
@@ -19,7 +28,6 @@ def get_post_likers(url):
         "X-RapidAPI-Host": "instagram-data1.p.rapidapi.com"
     }
     response = requests.get(config.api_url_2, headers=headers, params=querystring)
-    print(response.content)
     return {'likes_count': response.json()['count'], 'likes': response.json()['collector']}
 
 
@@ -34,11 +42,21 @@ def get_user_info_1(username):
         "X-RapidAPI-Host": "instagram-scraper-20231.p.rapidapi.com"
     }
     response = requests.get(config.api_url_3 + username, headers=headers)
-    print(response.content)
+    # print(response.content)
     if 'data' in response.json():
         return response.json()['data']
     return None
 
+def get_post_likers_2(url):
+    print(url)
+    url = config.api_url_4 + extract_shortcode(url) + "/4/%7Bend_cursor%7D"
+    headers = {
+        "X-RapidAPI-Key": config.api_key,
+        "X-RapidAPI-Host": "instagram-scraper-20231.p.rapidapi.com"
+    }
+    response = requests.get(url, headers=headers)
+    # print(response.content)
+    return {'likes_count': response.json()['data']['count'], 'likes': response.json()['data']['likes']}
 
 """
     Function to get user information
@@ -61,7 +79,7 @@ def get_user_info_2(username):
 # ################################## MAIN ############################################
 def extract_data(post_url):
     users = []
-    response = get_post_likers(post_url)
+    response = get_post_likers_2(post_url)
 
     for user in itertools.islice(response['likes'], 2):
         print(user['username'])
@@ -77,7 +95,7 @@ def extract_data(post_url):
                 'profile_image_url': 1 if result.get('profile_pic_url') else 0
             }
             users.append(user_data)
-            print(user_data)
+            # print(user_data)
 
     for user in itertools.islice(response['likes'], 2, 4):
         print(user['username'])
@@ -93,11 +111,7 @@ def extract_data(post_url):
                 'profile_image_url': 1 if (result.get('user')).get('profile_pic_url') else 0
             }
             users.append(user_data)
-            print(user_data)
+            # print(user_data)
     return response['likes_count'], users
 
 
-if __name__ == "__main__":
-    #post_url = sys.argv[-1]
-    post_url = "https://www.instagram.com/p/C2DEytkxprb/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA=="
-    likes, users = extract_data(post_url=post_url)

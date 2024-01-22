@@ -6,12 +6,14 @@ app = Flask(__name__)
 
 @app.route('/<url>', methods=['GET'])
 def hello(url):
-    likes = extract_data(post_url=url)
-    return "hello"
+    likes, features = extract_data(post_url='https://www.instagram.com/insatoulouse/p/C2KGUkQNfqs/?hl=fr')
+    print(likes)
+    print(features)
+    return url
     
 @app.route('/', methods=['GET'])
 def home():
     return "hello"
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5003)

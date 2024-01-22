@@ -270,10 +270,14 @@
 <script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
 <script src="/static/assets/js/plugins/chartjs.min.js"></script>
 <script>
-    var humanSize, botSize, likes, sampleSize, samplePrc, humanPrc, botPrc;
+    var humanSize = '{{ humanSize }}';
+    var botSize = '{{ botSize }}';
+    var likes = '{{ likes }}';
+    var users = '{{ users }}';
+    var sampleSize, samplePrc , humanPrc, botPrc;
     var dataList = [];
     var pieChart = null;
-
+    console.log(users)
     function isValidUrl(url) {
       var urlRegex = /^(https?:\/\/)?([\w-]+\.)+[\w-]+(\/[\w- .\/?%&=]*)?$/;
       return urlRegex.test(url);
@@ -296,9 +300,7 @@
       }
 
       // display results
-      humanSize = 1;
-      botSize = 3;
-      likes = 1000;
+      
 
       sampleSize = 4;
       samplePrc = 100 * sampleSize / likes;
@@ -306,11 +308,21 @@
       humanPrc = 100 * humanSize / sampleSize;
       botPrc = 100 * botSize / sampleSize;
 
-      dataList = [
-        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9", username: "oussama307r", verified: true, prediction: "bot", probability: 60 },
-        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/71527027_2503415269747548_8178802652931424256_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=HUFJ450B9cAAX-8_N64&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfDHPbZJVQ0eF5FRkwKKbb3X9JonHGarFTArubULd--sBQ&oe=6583CA57&_nc_sid=28a1e9", username: "yousufmansoor", verified: false, prediction: "human", probability: 40 },
-        { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/393350647_3306548992969492_2602333449843746346_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=CTN0VxR4tQoAX_ubZDf&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCH8aNW3X-BYk42QHo6lIolwRDhdHzh17zyJToYi8f6aA&oe=65844D71&_nc_sid=28a1e9", username: "na_1mah_", verified: true, prediction: "human", probability: 55 },
-      ];
+      for (var i in users) {
+    var user = users[i];
+    dataList.push({
+        imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9",
+        username: user[0],  // Use index to access values
+        verified: user[1],
+        prediction: user[2],
+        probability: user[3]
+    });
+}
+      //dataList = [
+      //  { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9", username: "oussama307r", verified: true, prediction: "bot", probability: 60 },
+      //  { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/71527027_2503415269747548_8178802652931424256_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=100&_nc_ohc=HUFJ450B9cAAX-8_N64&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfDHPbZJVQ0eF5FRkwKKbb3X9JonHGarFTArubULd--sBQ&oe=6583CA57&_nc_sid=28a1e9", username: "yousufmansoor", verified: false, prediction: "human", probability: 40 },
+      //  { imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/393350647_3306548992969492_2602333449843746346_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=104&_nc_ohc=CTN0VxR4tQoAX_ubZDf&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCH8aNW3X-BYk42QHo6lIolwRDhdHzh17zyJToYi8f6aA&oe=65844D71&_nc_sid=28a1e9", username: "na_1mah_", verified: true, prediction: "human", probability: 55 },
+      //];
 
       updateChart(humanPrc, botPrc);
       updateData(humanSize, humanPrc, botSize, botPrc, sampleSize, samplePrc, likes);

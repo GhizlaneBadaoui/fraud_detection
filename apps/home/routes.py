@@ -9,26 +9,15 @@ from flask_login import login_required
 from jinja2 import TemplateNotFound
 
 
-@blueprint.route('/index')
+@blueprint.route('/index', methods=['GET'])
 @login_required
 def index():
-    users = [["oussama307r",True,"bot",60],["oussama",True,"bot",60]]
-    return render_template('home/index.html', segment = 'index', users = users)
-
-@blueprint.route('/get')
-@login_required
-def get_info():
-    #url = "http://127.0.0.1:5003/"
-    #json_data = request.get_json()
-    #likes, botSize, humanSize, users = requests.post(url=url, json=json_data)
-    likes, botSize, humanSize, users = (1000,3,4,[["oussama307r",True,"bot",60],["oussama",True,"bot",60]])
-    return render_template('home/index.html', humanSize = humanSize, botSize = botSize, Nblikes = likes, users = users)
+    return render_template('home/index.html', segment='index')
 
 @blueprint.route('/<template>')
 @login_required
 def route_template(template):
     try:
-
         if not template.endswith('.html'):
             template += '.html'
 

@@ -1,9 +1,10 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 import requests
 import joblib
-
+import json
+from flask_cors import CORS 
 app = Flask(__name__)
-
+CORS(app)
 
 model = None
 
@@ -28,12 +29,23 @@ def hello():
     except Exception as e:
         return(f"An error occurred: {e}")
 
-@app.route('/test')
+@app.route('/test', methods=['GET'])
 def text():
-    url = "https://mlflaskms.azurewebsites.net/test"
-    response = requests.get(url)
-    return response.content
-    
+    #return jsonify(100,55,20,[["walid",True,2,2],["walid",True,6,2]])
+    return model.test
+
+@app.route('/pred', methods=['POST'])
+def pred():
+    data = []
+    json_data = request.get_json()
+    for i in json_data:
+        data.append([ int(v1) if k1 == 'id' else v1 for k1, v1 in i.items()])
+    print(data)
+    resp = model.predict_with_confidence(data)
+    print(resp)
+    print(json.dumps(resp))
+    return json.dumps(resp)
+
 
 if __name__ == '__main__':
     app.run(debug=True, port=5002)

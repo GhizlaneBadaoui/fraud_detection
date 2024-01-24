@@ -46,10 +46,9 @@ class FraudDetectionModel:
         if hasattr(self.grid_search.best_estimator_, "predict_proba"):
             probabilities = self.grid_search.best_estimator_.predict_proba(X)
             predictions = self.grid_search.best_estimator_.predict(X)
-            return [(pred, max(prob)) for pred, prob in zip(predictions, probabilities)]
+            return [{'prediction' : pred, 'probability': max(prob)} for pred, prob in zip(predictions, probabilities)]
         else:
             raise ValueError("Ce modèle ne supporte pas la prédiction de probabilités.")
-
 
     def perf(self):
         cv_scores = cross_val_score(self.grid_search, self.X_train, self.y_train, cv=5).mean()

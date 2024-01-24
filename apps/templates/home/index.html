@@ -196,7 +196,7 @@
               <h6>Analysis Steps</h6>
               <p class="text-sm">
                 <i class="material-icons text-sm my-auto me-1">schedule</i>
-                <span class="font-weight-bold">0.08ms</span> Time Taken
+                <span class="font-weight-bold">0.7ms</span> Time Taken
               </p>
             </div>
             <div class="card-body p-3">
@@ -473,13 +473,11 @@
       const tableBody = document.getElementById('dataTableBody');
       tableBody.innerHTML = '';
       dataList.forEach(data => {
+        console.log(data)
         const row = document.createElement('tr');
 
         const userColumn = document.createElement('td');
-        userColumn.innerHTML = `<div class="d-flex px-2 py-1">
-          <div><img src="${data.imageUrl}" class="avatar avatar-sm me-3" alt="${data.username}"></div>
-          <div class="d-flex flex-column justify-content-center"><h6 class="mb-0 text-sm">${data.username}</h6></div>
-        </div>`;
+        userColumn.innerHTML = `<div class="d-flex flex-column justify-content-center"><h6 class="mb-0 text-sm">&emsp;${data.screen_name}</h6></div>`;
         row.appendChild(userColumn);
 
         const verifiedColumn = document.createElement('td');
@@ -589,8 +587,8 @@
       }
 
       // display results
-      const data = { url: inputValue };
-      fetch('http://127.0.0.1:5001/', {
+      const data = inputValue;
+      fetch('https://instaapi.azurewebsites.net/', {
           method: 'POST',
           headers: {
               'Content-Type': 'application/json',
@@ -600,22 +598,29 @@
       .then(response => response.json())
       .then(result => {
           console.log(result);
-          { humanSize, botSize, likes, users } = result;
-
-          sampleSize = 4;
+          humanSize = result[0];
+          botSize = result[1];
+          likes = result[2];
+          users = result[3];
+          console.log(humanSize);
+          console.log(botSize);
+          console.log(likes);
+          console.log(users);
+          sampleSize = users.length;
           samplePrc = 100 * sampleSize / likes;
+          samplePrc = parseFloat(samplePrc.toFixed(2));
 
           humanPrc = 100 * humanSize / sampleSize;
           botPrc = 100 * botSize / sampleSize;
+          botPrc = parseFloat(botPrc.toFixed(2));
 
           for (var i in users) {
             var user = users[i];
             dataList.push({
-                imageUrl: "https://scontent-mia3-1.cdninstagram.com/v/t51.2885-19/250631317_113244987821086_7530037314748942108_n.jpg?stp=dst-jpg_s150x150&_nc_ht=scontent-mia3-1.cdninstagram.com&_nc_cat=110&_nc_ohc=-8TaVpU1uL4AX8LPwym&edm=AAo1ks0BAAAA&ccb=7-5&oh=00_AfCKp4HlLkujD5O9GN1M2fZjlTlDUh-PDvnGyYYkgtZyug&oe=658363BD&_nc_sid=28a1e9",
-                username: user[0],
-                verified: user[1],
-                prediction: user[2],
-                probability: user[3]
+                screen_name: user[1],
+                verified: user[2],
+                prediction: user[3],
+                probability: Math.floor(user[4]*100)
             });
           }
 

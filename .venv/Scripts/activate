@@ -38,7 +38,7 @@ deactivate () {
 # unset irrelevant variables
 deactivate nondestructive
 
-VIRTUAL_ENV="C:\Users\hp\Desktop\SDBD\ProjetIntegrateur\fraud\fraud_detection\.venv"
+VIRTUAL_ENV="C:\Users\hp\Desktop\SDBD\ProjetIntegrateur\instagramAPI\fraud_detection\.venv"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"

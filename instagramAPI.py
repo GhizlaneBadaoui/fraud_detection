@@ -28,6 +28,7 @@ def get_post_likers(url):
         "X-RapidAPI-Host": "instagram-data1.p.rapidapi.com"
     }
     response = requests.get(config.api_url_2, headers=headers, params=querystring)
+    print(response.content)
     return {'likes_count': response.json()['count'], 'likes': response.json()['collector']}
 
 
@@ -48,7 +49,6 @@ def get_user_info_1(username):
     return None
 
 def get_post_likers_2(url):
-    print(url)
     url = config.api_url_4 + extract_shortcode(url) + "/4/%7Bend_cursor%7D"
     headers = {
         "X-RapidAPI-Key": config.api_key,
@@ -78,40 +78,53 @@ def get_user_info_2(username):
 
 # ################################## MAIN ############################################
 def extract_data(post_url):
-    users = []
+    users_interface = []
+    users_ml = []
     response = get_post_likers_2(post_url)
+    #response = get_post_likers(post_url)
 
-    for user in itertools.islice(response['likes'], 2):
+    for user in itertools.islice(response['likes'], 4):
         print(user['username'])
         result = get_user_info_1(user['username'])
         if result:
-            user_data = {
+            user_data_1 = {
                 'id': result.get('id'),
                 'screen_name': result.get('username'),
                 'verified': result.get('is_verified'),
-                'followers_count': (result.get('edge_followed_by')).get('count'),
-                'friends_count': (result.get('edge_follow')).get('count'),
+                'profile_image_url': result.get('profile_pic_url')
+            }
+            user_data_2 = {
+                'id': result.get('id'),
+                'verified': result.get('is_verified'),
+                'followers_count': (result.get('edge_followed_by')).get('count') if result.get('edge_followed_by') else 0,
+                'friends_count': (result.get('edge_follow')).get('count') if result.get('edge_follow') else 0,
                 'description': 1 if result.get('biography') else 0,
                 'profile_image_url': 1 if result.get('profile_pic_url') else 0
             }
-            users.append(user_data)
-            # print(user_data)
+            users_interface.append(user_data_1)
+            users_ml.append(user_data_2)
 
-    for user in itertools.islice(response['likes'], 2, 4):
-        print(user['username'])
-        result = get_user_info_2(user['username'])
-        if result:
-            user_data = {
-                'id': (result.get('user')).get('id'),
-                'screen_name': (result.get('user')).get('username'),
-                'verified': (result.get('user')).get('is_verified'),
-                'followers_count': ((result.get('user')).get('edge_followed_by')).get('count'),
-                'friends_count': ((result.get('user')).get('edge_follow')).get('count'),
-                'description': 1 if (result.get('user')).get('biography') else 0,
-                'profile_image_url': 1 if (result.get('user')).get('profile_pic_url') else 0
-            }
-            users.append(user_data)
-            # print(user_data)
-    return response['likes_count'], users
+    #for user in itertools.islice(response['likes'], 2, 4):
+        #print(user['username'])
+        #result = get_user_info_2(user['username'])
+        #if result:
+        #    user_data_1 = {
+        #        'id': result.get('id'),
+        #        'screen_name': result.get('username'),
+        #        'verified': result.get('is_verified'),
+        #        'profile_image_url': result.get('profile_pic_url')
+        #    }
+        #    user_data_2 = {
+        #        'id': result.get('id'),
+        #        'verified': result.get('is_verified'),
+        #        'followers_count': (result.get('edge_followed_by')).get('count') if result.get('edge_followed_by') else 0,
+        #        'friends_count': (result.get('edge_follow')).get('count') if result.get('edge_follow') else 0,
+        #        'description': 1 if result.get('biography') else 0,
+        #        'profile_image_url': 1 if result.get('profile_pic_url') else 0
+        #    }
+        #    users_interface.append(user_data_1)
+        #    users_ml.append(user_data_2)
+        #    # print(user_data)
+    return response['likes_count'], users_interface, users_ml 
 
 

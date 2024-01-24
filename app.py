@@ -1,6 +1,7 @@
 from flask import Flask, request, send_file
 from main import FraudDetectionModel
 import joblib
+import requests
 
 app = Flask(__name__)
 
@@ -18,6 +19,5 @@ def hello():
 def test():
     return "hello2"
 
-
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, port=5003)
